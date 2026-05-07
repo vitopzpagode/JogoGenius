@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Genius</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="neon neon1"></div>
+  <div class="neon neon2"></div>
+  <div class="neon neon3"></div>
+
+  <header>
+
+    <div class="logo">
+
+      <h1>GENIUS</h1>
+
+    </div>
+
+    <button id="startBtn">
+
+      <span>START GAME</span>
+
+    </button>
+
+  </header>
+
+  <main>
+
+    <section class="leftSide">
+
+      <div class="boardWrapper">
+
+        <div class="boardGlow"></div>
+
+        <div class="board">
+
+          <div class="pad green" data-color="green">
+            <div class="padOverlay"></div>
+          </div>
+
+          <div class="pad red" data-color="red">
+            <div class="padOverlay"></div>
+          </div>
+
+          <div class="pad yellow" data-color="yellow">
+            <div class="padOverlay"></div>
+          </div>
+
+          <div class="pad blue" data-color="blue">
+            <div class="padOverlay"></div>
+          </div>
+
+          <div class="center">
+
+            <div class="centerGlow"></div>
+
+            <h2>GENIUS</h2>
+
+            <p>MEMORY SYSTEM</p>
+
+            <div class="miniLights">
+
+              <span class="light active"></span>
+              <span class="light"></span>
+              <span class="light"></span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="rightSide">
+
+      <div class="statsContainer">
+
+        <div class="card glass">
+
+          <div class="topLine"></div>
+
+          <h3>ROUND</h3>
+
+          <span id="round">0</span>
+
+        </div>
+
+        <div class="card glass">
+
+          <div class="topLine"></div>
+
+          <h3>STATUS</h3>
+
+          <p id="message">Clique em START GAME</p>
+
+        </div>
+
+        <div class="card glass">
+
+          <div class="topLine"></div>
+
+          <h3>RECORD</h3>
+
+          <span id="record">0</span>
+
+        </div>
+
+        <div class="card glass comboCard">
+
+          <div class="topLine"></div>
+
+          <h3>COMBO</h3>
+
+          <span id="combo">x0</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <p>
+      © 2026 <span>Genius</span>
+      Desenvolvido para Programação Website I.
+    </p>
+
+  </footer>
+
+  <div class="gameOver hidden" id="gameOver">
+
+    <div class="gameBox">
+
+      <div class="dangerGlow"></div>
+
+      <h2>GAME OVER</h2>
+
+      <p id="finalText"></p>
+
+      <button id="restartBtn">
+
+        PLAY AGAIN
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <audio id="greenSound"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+
+  <audio id="redSound"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+
+  <audio id="yellowSound"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+
+  <audio id="blueSound"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
