@@ -1,22 +1,34 @@
 const pads = document.querySelectorAll(".pad");
 
-const startBtn = document.getElementById("startBtn");
+const startBtn =
+document.getElementById("startBtn");
 
-const restartBtn = document.getElementById("restartBtn");
+const restartBtn =
+document.getElementById("restartBtn");
 
-const roundText = document.getElementById("round");
+const difficultySelect =
+document.getElementById("difficulty");
 
-const recordText = document.getElementById("record");
+const roundText =
+document.getElementById("round");
 
-const comboText = document.getElementById("combo");
+const recordText =
+document.getElementById("record");
 
-const message = document.getElementById("message");
+const comboText =
+document.getElementById("combo");
 
-const gameOver = document.getElementById("gameOver");
+const message =
+document.getElementById("message");
 
-const finalText = document.getElementById("finalText");
+const gameOver =
+document.getElementById("gameOver");
 
-const lights = document.querySelectorAll(".light");
+const finalText =
+document.getElementById("finalText");
+
+const lights =
+document.querySelectorAll(".light");
 
 const colors = [
   "green",
@@ -24,6 +36,32 @@ const colors = [
   "yellow",
   "blue"
 ];
+
+const difficulties = {
+
+  easy: {
+    speed: 900,
+    flash: 450
+  },
+
+  medium: {
+    speed: 700,
+    flash: 350
+  },
+
+  hard: {
+    speed: 500,
+    flash: 250
+  },
+
+  impossible: {
+    speed: 300,
+    flash: 170
+  }
+
+};
+
+let currentDifficulty = "medium";
 
 let sequence = [];
 
@@ -58,6 +96,16 @@ const sounds = {
 
 };
 
+difficultySelect.addEventListener(
+  "change",
+  () => {
+
+    currentDifficulty =
+    difficultySelect.value;
+
+  }
+);
+
 startBtn.addEventListener("click", () => {
 
   if(gameStarted) return;
@@ -66,7 +114,10 @@ startBtn.addEventListener("click", () => {
 
 });
 
-restartBtn.addEventListener("click", restartGame);
+restartBtn.addEventListener(
+  "click",
+  restartGame
+);
 
 pads.forEach(pad => {
 
@@ -107,6 +158,8 @@ function startGame(){
 
   startBtn.disabled = true;
 
+  difficultySelect.disabled = true;
+
   message.textContent =
   "Prepare-se...";
 
@@ -114,7 +167,7 @@ function startGame(){
 
     nextRound();
 
-  }, 1000);
+  }, 1200);
 
 }
 
@@ -123,6 +176,8 @@ function restartGame(){
   gameStarted = false;
 
   startBtn.disabled = false;
+
+  difficultySelect.disabled = false;
 
   startGame();
 
@@ -166,6 +221,9 @@ function showSequence(){
 
   let delay = 0;
 
+  const speed =
+  difficulties[currentDifficulty].speed;
+
   sequence.forEach(color => {
 
     setTimeout(() => {
@@ -176,7 +234,7 @@ function showSequence(){
 
     }, delay);
 
-    delay += 700;
+    delay += speed;
 
   });
 
@@ -202,7 +260,8 @@ function flash(color){
 
     pad.classList.remove("active");
 
-  }, 350);
+  },
+  difficulties[currentDifficulty].flash);
 
 }
 
@@ -260,12 +319,22 @@ function loseGame(){
 
   startBtn.disabled = false;
 
+  difficultySelect.disabled = false;
+
   combo = 0;
 
   updateUI();
 
   message.textContent =
   "Você perdeu";
+
+  document.body.classList.add("shake");
+
+  setTimeout(() => {
+
+    document.body.classList.remove("shake");
+
+  }, 500);
 
   if(round > record){
 
@@ -305,37 +374,43 @@ function randomLight(){
   });
 
   const random =
-  Math.floor(Math.random() * lights.length);
+  Math.floor(
+    Math.random() * lights.length
+  );
 
   lights[random]
   .classList.add("active");
 
 }
 
-document.addEventListener("keydown", event => {
+document.addEventListener(
+  "keydown",
+  event => {
 
-  if(!canPlay) return;
+    if(!canPlay) return;
 
-  const keyMap = {
+    const keyMap = {
 
-    q:"green",
-    w:"red",
-    a:"yellow",
-    s:"blue"
+      q:"green",
+      w:"red",
+      a:"yellow",
+      s:"blue"
 
-  };
+    };
 
-  const color = keyMap[event.key];
+    const color =
+    keyMap[event.key.toLowerCase()];
 
-  if(color){
+    if(color){
 
-    const pad =
-    document.querySelector(
-      `[data-color="${color}"]`
-    );
+      const pad =
+      document.querySelector(
+        `[data-color="${color}"]`
+      );
 
-    pad.click();
+      pad.click();
+
+    }
 
   }
-
-});
+);

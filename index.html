@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Genius</title>
+  <title>Genius Neon</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -27,16 +27,44 @@
   <header>
 
     <div class="logo">
-
-      <h1>GENIUS</h1>
-
+      <h1>GENIUS GAME</h1>
     </div>
 
-    <button id="startBtn">
+    <div class="headerControls">
 
-      <span>START GAME</span>
+      <div class="difficultyBox">
 
-    </button>
+        <label for="difficulty">
+          DIFICULDADE
+        </label>
+
+        <select id="difficulty">
+
+          <option value="easy">
+            Fácil
+          </option>
+
+          <option value="medium" selected>
+            Médio
+          </option>
+
+          <option value="hard">
+            Difícil
+          </option>
+
+          <option value="impossible">
+            Impossível
+          </option>
+
+        </select>
+
+      </div>
+
+      <button id="startBtn">
+        <span>START</span>
+      </button>
+
+    </div>
 
   </header>
 
@@ -110,7 +138,9 @@
 
           <h3>STATUS</h3>
 
-          <p id="message">Clique em START GAME</p>
+          <p id="message">
+            Clique em START
+          </p>
 
         </div>
 
@@ -131,6 +161,23 @@
           <h3>COMBO</h3>
 
           <span id="combo">x0</span>
+
+        </div>
+
+        <div class="card glass">
+
+          <div class="topLine"></div>
+
+          <h3>CONTROLES (PARA TECLADO)</h3>
+
+          <div class="controlsText">
+
+            <p>Q = Verde</p>
+            <p>W = Vermelho</p>
+            <p>A = Amarelo</p>
+            <p>S = Azul</p>
+
+          </div>
 
         </div>
 
@@ -160,9 +207,7 @@
       <p id="finalText"></p>
 
       <button id="restartBtn">
-
         PLAY AGAIN
-
       </button>
 
     </div>
